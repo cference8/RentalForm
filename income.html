@@ -1,0 +1,67 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Income</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <section>
+      <h1>Rental Application:</h1>
+      <span> 9334 Overlook Trail Eden Prairie, MN 55347</span><br />
+      <div class="container">
+        <form action="moreinfo.html">
+          <div class="form-group">
+            <h1>Provide your current income situation</h1>
+            <p>
+              The landlord wants to know that you will be able to afford the
+              rent and security deposit.
+            </p>
+            <h3>Current Employer</h3>
+            <label for="employer">Employer</label>
+            <input type="text" id="employer" name="employer" />
+          </div>
+
+          <div class="form-group">
+            <label for="current_employer_occupation"
+              >Position / Title / Occupation</label
+            >
+            <input
+              type="text"
+              id="current_employer_occupation"
+              name="employer_occupation"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="date">Start Date</label>
+            <input type="date" id="date" name="date" />
+          </div>
+
+          <div class="form-group">
+            <label for="monthly_income">Monthly Income</label>
+            <input
+              type="text"
+              id="monthly_income"
+              name="monthly_income"
+              placeholder="$"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="contact_name">Contact Name</label>
+            <input type="text" id="contact_name" name="contact_name" />
+          </div>
+
+          <div class="form-group">
+            <label for="tel">Phone Number</label>
+            <input type="tel" id="tel" name="tel" />
+          </div>
+
+          <button type="submit">Next</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
