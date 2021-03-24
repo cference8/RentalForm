@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+/*@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
 * {
   padding: 0;
@@ -9,11 +9,12 @@
 body {
   font-family: 'Montserrat', 'sans-serif';
   margin: 0;
-  background-color: aliceblue;
+  background-color: red;
 }
 
 section {
   width: 100%;
+  background-color: aliceblue;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,7 +59,7 @@ textarea {
   resize: vertical;
 }
 
-#form-button {
+button[type='submit'] {
   width: 100%;
   border: none;
   outline: none;
@@ -73,7 +74,7 @@ textarea {
   transition: 0.3s ease background-color;
 }
 
-#form-button {
+button[type='submit']:hover {
   background-color: rgb(214, 226, 236);
 }
 #status {
@@ -108,4 +109,4 @@ textarea {
     opacity: 0;
     pointer-events: none;
   }
-}
+}*/

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+              rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+            <style>
+                @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+                * {
+                    padding: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+
+                body {
+                    font-family: 'Montserrat', 'sans-serif';
+                    margin: 0;
+                }
+
+                section {
+                    width: 100%;
+                    background-color: aliceblue;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+
+                .container {
+                    width: 90%;
+                    max-width: 500px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    box-shadow: 0px 0px 20px #00000010;
+                    background-color: white;
+                    border-radius: 8px;
+                    margin-bottom: 20px;
+                }
+
+                h1 {
+                    text-align: center;
+                }
+
+                li {
+                    padding-top: 10px;
+                }
+
+                .form-group {
+                    width: 100%;
+                    margin-top: 20px;
+                    font-size: 20px;
+                }
+
+                .form-group input,
+                .form-group textarea {
+                    width: 100%;
+                    padding: 5px;
+                    font-size: 18px;
+                    border: 1px solid rgba(128, 128, 128, 0, 199);
+                    margin-top: 5px;
+                }
+
+                textarea {
+                    resize: vertical;
+                }
+
+                button[type='submit'] {
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    padding: 20px;
+                    font-size: 24px;
+                    border-radius: 8px;
+                    font-family: 'Monserrat';
+                    color: rgb(27, 166, 247);
+                    text-align: center;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    transition: 0.3s ease background-color;
+                }
+
+                button[type='submit']:hover {
+                    background-color: rgb(214, 226, 236);
+                }
+                #status {
+                    width: 90%;
+                    max-width: 500px;
+                    text-align: center;
+                    padding: 10px;
+                    margin: 0 auto;
+                    border-radius: 8px;
+                }
+
+                #status.success {
+                    background-color: rgb(211, 250, 153);
+                    animation: status 4s ease forwards;
+                }
+
+                #status.error {
+                    background-color: rgb(250, 129, 92);
+                    color: white;
+                    animation: status 4s ease forwards;
+                }
+                @keyframes status {
+                    0% {
+                        opacity: 1;
+                        pointer-events: all;
+                    }
+                    90% {
+                        opacity: 1;
+                        pointer-events: all;
+                    }
+                    100% {
+                        opacity: 0;
+                        pointer-events: none;
+                    }
+                }
+            </style>
+
+            <title>Rental Application: Content</title>
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="text-right">
+                <span sec:authorize="isAuthenticated()">
+                    <form class="text-right"
+                          method="POST"
+                          action="/logout">
+                        <input type="hidden"
+                               th:name="${_csrf.parameterName}"
+                               th:value="${_csrf.token}"/>
+                        <label for="submit">
+                            Hello : &nbsp; <span th:text="${#authentication.name}"> </span>&nbsp;&nbsp;&nbsp;|                       
+                        </label>
+                        <button class="btn btn-link" type="submit">Logout</button>
+                    </form>
+                </span>
+                <span sec:authorize="isAnonymous()">
+                    <a href="/createAccount">Create Account</a> &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{/login}">Log in</a>
+
+                </span>
+            </div>
+
+            <h1>Rental Application</h1>
+            <hr/>
+            <div class="navbar">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="nav-item">
+                        <a class="nav-link" href="home">
+                            Home
+                        </a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a class="nav-link active" href="content">
+                            Application
+                        </a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a class="nav-link" href="admin">
+                            Admin
+                        </a>
+                    </li>
+                </ul>
+
+                <section>
+                    <h1>Rental Application:</h1>
+                    <span> 9334 Overlook Trail Eden Prairie, MN 55347</span><br>
+                        <h1>Start the Rental Application!</h1>
+                        <li>You will want to have the following handy:</li>
+                        <li>Your current & past home addresses</li>
+                        <li>Contact infor for your past landlords</li>
+                        <li>Copy of a photo-ID to upload</li>
+                        <li>Proof of income such as pay stubs or bank statements</li>
+                        <form action="tenantinfo.html">
+                            <div class="form-group">
+                                <label for="date">Desired Move-In Date</label>
+                                <input type="date" id="date" name="date" />
+                            </div>
+                            <button type="submit">GET STARTED</button>
+                        </form>
+
+                </section>
+            </div>
+
+
+            <!--            <p>
+                            Only users with the USER role can see this page.
+                        </p>-->
+
+            <!--            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                            <p>
+                                This is only visible to users who also have the ADMIN role.
+                            </p>
+                        </div>-->
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" 
+        integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>
+
